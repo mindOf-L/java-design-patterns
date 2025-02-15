@@ -24,6 +24,7 @@
  */
 package com.iluwatar.specialcase;
 
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,6 +36,8 @@ public class MaintenanceLock {
   private static final Logger LOGGER = LoggerFactory.getLogger(MaintenanceLock.class);
 
   private static MaintenanceLock instance;
+
+  @Getter
   private boolean lock = true;
 
   /**
@@ -49,12 +52,8 @@ public class MaintenanceLock {
     return instance;
   }
 
-  public boolean isLock() {
-    return lock;
-  }
-
   public void setLock(boolean lock) {
     this.lock = lock;
-    LOGGER.info("Maintenance lock is set to: ", lock);
+    LOGGER.info("Maintenance lock is set to: {}", lock);
   }
 }
